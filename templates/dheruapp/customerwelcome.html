@@ -1,0 +1,1327 @@
+{% extends 'base.html' %}
+{% load static %}
+{%  block content %}
+
+<head>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <style>
+        :root{ 
+            --primary:#3DCFD3;
+            --dark:#161616;
+            --pure:#FFFFFF;
+            --ternary:#898989;
+            --light:#F2F2F2;
+            --secondary:#070606;
+      }
+     body{
+         width: 90%;
+         margin-left: 4.7rem;
+         margin-right: 0;
+     }
+
+               /* utilities.css  */
+.flex{
+	display: flex;
+}
+
+.items-centre{
+	align-items: center;
+}
+.justify-between{
+	justify-content: space-between;
+}
+.btn{
+	padding: 0.8rem 3rem;
+	font-size: 1rem;
+	font-weight: 600;
+	border: 2px solid transparent;
+	outline: none;
+	cursor: pointer;
+	text-transform: uppercase;
+	transition: all .3s ease;
+}
+.btn-primary{
+	background: var(--primary);
+	color: var(--secondary);
+}
+.btn-primary:hover{
+	background: transparent;
+	border-color: var(--primary);
+	color: var(--primary);
+}
+.flex-1{
+	flex: 1;
+}
+.justify-centre{
+	justify-content: center;
+}
+
+
+
+
+
+
+     
+
+/* neon effect for download cv*/
+
+section.cv a{
+	position: relative;
+    display: inline-block;
+    padding: 15px 30px;
+    color: #2196f3;
+    letter-spacing: 4px;
+    text-decoration: none;
+    font-size: 24px;
+    overflow: hidden;
+	transition: 0.2s;
+	justify-content: center;
+    align-items: center;
+}
+section.cv{
+	margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+	background: #031321;
+	/*background: white;*/
+    font-family: bold;
+}
+
+section.cv a:hover{
+	/*color: #255784*/
+	 color: red;
+    background: #2196f3;
+    box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3;
+    transition-delay: 1s;
+}
+section.cv a span{
+    position: absolute;
+    display: block;
+}
+section.cv a span:nth-child(1){
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg,transparent,#2196f3);
+}
+section.cv a:hover span:nth-child(1){
+    left: 100%;
+    transition: 0.80s;
+}
+
+
+section.cv a span:nth-child(2){
+    top: -100%;
+    right: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(180deg,transparent,#2196f3);
+}
+section.cv a:hover span:nth-child(2){
+    top: 100%;
+    transition: 1s;
+    transition-delay: .20s;
+}
+
+section.cv a span:nth-child(3){
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(270deg,transparent,#2196f3);
+}
+section.cv a:hover span:nth-child(3){
+    right: 100%;
+    transition: 1s;
+    transition-delay: .40s;
+}
+
+section.cv a span:nth-child(4){
+    bottom: -100%;
+    left: 0;
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(360deg,transparent,#2196f3);
+}
+section.cv a:hover span:nth-child(4){
+    bottom: 100%;
+    transition: 1s;
+    transition-delay: .60s;
+}
+
+
+
+
+
+
+
+
+
+
+        html{
+            scroll-behavior: smooth;
+        }
+        
+         *{
+             padding: 0;
+             margin: 0;
+             box-sizing: border-box;
+             -webkit-font-smotthing:antialiased; 
+         
+         }
+        
+        header{
+             background: var(--dark);
+             clip-path: polygon(0 0,100% 0,100% 100%,75% 93%,0 100%);
+            
+        }
+        .container{
+            max-width: 1152px;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+        
+        @media (min-width:57px){
+            .container{
+                max-width: 540px;
+            }
+        }
+        @media (min-width:768px){
+            .container{
+                max-width: 720px;
+            }
+        }
+        @media (min-width:992px){
+            .container{
+                max-width: 960px;
+            }
+        }
+        @media (min-width:1200px){
+            .container{
+                max-width: 1152px;
+            }
+        }
+        
+        
+        
+        
+        header nav .left a{
+            color: var(--pure);
+            text-decoration: none;
+            margin-right: 2rem;
+            text-transform: uppercase;
+            transition: all .3s ease;
+        }
+        header nav .left a:hover{
+            color:var(--primary);
+        }
+        
+        
+        header nav{
+            padding: 2rem 0;
+        }
+        header nav .branding{
+             margin-right: 3rem;
+        }
+
+
+
+
+
+        ader nav .left a{
+            color: var(--pure);
+            text-decoration: none;
+            margin-right: 2rem;
+            text-transform: uppercase;
+            transition: all .3s ease;
+        }
+        header nav .left a:hover{
+            color:var(--primary);
+        }
+        
+        
+        header nav{
+            padding: 2rem 0;
+        }
+        header nav .branding{
+             margin-right: 3rem;
+        }
+        
+        /*header button{
+            position: relative;
+            display: inline-block;
+            padding: 15px 15px;
+            color: #2196f3;
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 24px;
+            overflow: hidden;
+            transition: .3s;
+        } 
+        
+        header button:hover{
+            color: #255784;
+            background: #2196f3;
+            box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3 0 0 80px #2196f3;
+            transition-delay:.1s ;
+        
+        }*/
+
+        
+
+
+
+
+
+
+        .hero .left img{
+            width: 400px;
+            
+        }
+        
+        .hero .right{
+            color: var(--pure);
+        }
+        .hero .right h6{
+            font-size: 1.6rem;
+            color:var(--primary);
+            margin-bottom: 0.5rem;
+        }
+        .hero .right h1{
+            font-size: 2.5rem;
+            font-weight: 100;
+            line-height: 1.2;
+            margin-bottom: 2rem;
+        }
+        /*.hero .right h1 span{
+            color: var(--primary);
+        }*/
+        
+        .hero .right .hacker{
+            margin: 0;
+            padding: 0;
+            display: flex;
+            
+            font-family: 'Bad Script', cursive;	
+        }
+        
+        .hero .right .hacker h2{
+            margin: 0;
+            padding: 0;
+            color: rgb(129, 238, 107);
+            font-size: 2.7rem;
+            margin-top: 0;
+        }
+        
+        .hero .right .hacker h2 span{
+            display: table-cell;
+            margin: 0;
+            padding: 0;
+            animation: animate 2s linear infinite;
+        }
+        .hero .right .hacker h2 span:nth-child(1)
+        {
+            animation-delay: .0s;
+        }
+        .hero .right .hacker h2 span:nth-child(2)
+        {
+            animation-delay: 0.25s;
+        }
+        .hero .right .hacker h2 span:nth-child(3)
+        {
+            animation-delay: 0.5s;
+        }
+        .hero .right .hacker h2 span:nth-child(4)
+        {
+            animation-delay: 0.75s;
+        }
+        .hero .right .hacker h2 span:nth-child(5)
+        {
+            animation-delay: 1s;
+        }
+        .hero .right .hacker h2 span:nth-child(6)
+        {
+            animation-delay: 1.25s;
+        }
+        .hero .right .hacker h2 span:nth-child(7)
+        {
+            animation-delay: 1.5s;
+        }
+        .hero .right .hacker h2 span:nth-child(8)
+        {
+            animation-delay: 1.75s;
+        }
+        .hero .right .hacker h2 span:nth-child(9)
+        {
+            animation-delay: 2s;
+        }
+        .hero .right .hacker h2 span:nth-child(10)
+        {
+            animation-delay: 2.25s;
+        }
+        .hero .right .hacker h2 span:nth-child(11)
+        {
+            animation-delay: 2.5s;
+        }
+        .hero .right .hacker h2 span:nth-child(12)
+        {
+            animation-delay: 2.75s;
+        }
+        .hero .right .hacker h2 span:nth-child(13)
+        {
+            animation-delay: 3s;
+        }
+        
+        @keyframes animate{
+            0%,100%{
+                color: #fff;
+                filter: blur(2px);
+                text-shadow: 0 0 10px #00b3ff,
+                 0 0 20px #00b3ff,
+                 0 0 40px #00b3ff,
+                 0 0 80px #00b3ff,
+                 0 0 120px #00b3ff,
+                 0 0 200px #00b3ff,
+                 0 0 300px #00b3ff,
+                 0 0 400px #00b3ff,
+                 0 0 520px #00b3ff,
+                 0 0 640px #00b3ff,
+                 0 0 780px #00b3ff,
+                 0 0 920px #00b3ff,
+                 0 0 1100px #00b3ff;
+            }
+            5%,95%{
+                color: rgb(129, 238, 107);
+                filter: blur(0px);
+                text-shadow: none;
+        }
+        }
+        
+        .hero .right p{
+            line-height: 1.9;
+            margin-bottom: 2rem;
+        }
+        .hero .right{
+            margin-top: -5rem;
+        }
+        .btn-secondary{
+            background: transparent;
+            color: var(--primary);
+            border-color: var(--primary);
+        }
+        .btn-secondary:hover{
+            background: var(--primary);
+            color: var(--secondary);
+        }
+        section{
+            padding: 6rem 0;
+        }
+        section.About .about-image{
+            height: 450px;
+        }
+        section.About h1{
+         margin-bottom: 1rem;
+         font-size: 1.6rem;
+         font-weight: 400;
+        }
+        section.About h1 span{
+            color: var(--primary)
+        }
+        section.About h3{
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+        section.About .socialmedia{
+        display: flex;
+        }
+        section.About .socialmedia a{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 35px;
+            height: 35px;
+            margin-right: 0.6rem;
+            transition: all .3s ease;
+        }
+        
+        section.About .socialmedia a img:hover{
+            background: var(--primary);
+        
+        }
+        
+        section.About p{
+            font-family: 'lato', sans-serif;
+            color: var(--ternary);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .section-heading{
+            color: var(--secondary);
+            text-align: center;
+            margin-bottom: 1rem;
+            line-height: 0.5;
+        }
+        .section-heading span{
+            color: var(--primary);
+        }
+        .section-heading + p{
+            color: var(--ternary);
+            font-family: 'lato', sans-serif;
+            margin-bottom: 6rem;
+            text-align: center;
+        }
+        section.services{
+            background: var(--light);
+        }
+        section.services .Card-wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; 
+            grid-column-gap: 2rem;
+            grid-row-gap: 6rem;
+        }
+        section.services .Card-wrapper .card{
+            background: var(--pure);
+            padding: 3rem 2rem;
+            position: relative;
+            padding-top: 4rem;
+            text-align: center;
+            transition: all .3sec ease;
+        }
+        section.services .Card-wrapper .card img{
+            position: absolute;
+            top: -3.5rem;
+            left: 34%;
+           
+            }
+            
+        section.services .Card-wrapper .card h2{
+            font-weight: 400;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+        section.services .Card-wrapper .card p{
+            font-family: 'lato',sans-serif;
+            color: var(--ternary);
+            line-height: 1.6;
+        }
+        section.services .Card-wrapper .card:hover{
+            background: var(--dark);
+        }
+        section.services .Card-wrapper .card:hover h2{
+            color: var(--pure);
+        }
+        section.services .Card-wrapper .card:hover p{
+            color: var(--pure);
+        }
+        section.freelancer{
+            text-align: center;
+            background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),url(../images/codingimage.jpg);
+            color: var(--pure);
+            clip-path: polygon(0 0,100% 0,100% 100%,75% 90%,0 100%);
+            padding-bottom: 8rem;
+        }
+        section.freelancer h1{
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        section.freelancer p{
+            margin-bottom: 0.5rem;
+            font-family: 'lato', sans-serif;
+            
+        }
+        section.freelancer p span{
+            color: var(--primary);
+        }
+        
+        section.freelancer h1 span{
+            color: var(--primary);
+            font-family: italic; 
+            font-size: 3rem;
+        }
+        section.reviews .slider .slide img{
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 2rem;
+        
+        }
+        section.reviews .slider .slide{
+            text-align: center;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            padding: 0 12rem;
+        }
+        section.reviews .slider .slide p{
+            font-family:"lato", sans-serif ;
+            color: var(--ternary);
+            margin-bottom: 1rem;
+        
+        }
+        section.reviews .slider .slide span{
+            font-size: 1rem;
+            margin-top: 2rem;
+            color: red;
+            font-family: italic;
+            font-weight: bold;
+        }
+        section.reviews .slick-dots{
+            display: flex!important;
+            list-style-type: none;
+            justify-content: center;
+            margin-top: 3rem;
+        }
+        section.reviews .slick-dots button{
+            font-size: 0;
+            width: 8px;
+            height:5px ;
+            margin-right: 0.3rem;
+            border: none;
+            outline: none;
+            background: var(--ternary);
+            border-radius: 50px;
+            cursor: pointer;
+        }
+        section.reviews .slick-active button{
+            background: var(--primary);
+            width: 30px;
+        }
+        section.work{
+            background: var(--light);
+        }
+        section.work .card-wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr; 
+            grid-gap:2rem;	
+        
+        }
+        section.work .card-wrapper .card img{
+            height: 200px;
+            width: 355px;
+        }
+        section.work .card-wrapper .card{
+            position: relative;
+            height: 200px;
+        }
+        section.work .card-wrapper .card .overlay{
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(25, 228, 7, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            color: var(--pure);
+            opacity: 0;
+            transition: all .3s ease;
+            font-weight: bold;
+        
+        }
+        section.work .card-wrapper .card:hover .overlay{
+        opacity: 1;
+        }
+        
+        section.work .card-wrapper .card .overlay a{
+            color: var(--secondary);
+            text-decoration: none;
+        
+        }
+        
+        
+       
+        
+        section.contact .card-wrapper{
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-gap: 1rem;
+        }
+        section.contact .card-wrapper .card{
+            text-align: center;
+        }
+        section.contact .card-wrapper .card img{
+            margin-bottom: 1rem;
+            height: 10vh;
+            width: 10vh;
+            margin-left: 150px;
+
+            
+        }
+        section.contact .card-wrapper .card h3{
+            font-weight: 400;
+            margin-bottom: 1rem;
+        }
+        section.contact .card-wrapper .card h5{
+            font-size: 1rem;
+            color: var(--primary);
+            font-weight: 400;
+        }
+        
+        section.contact .input-wrap{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-gap: 2rem;
+            margin-bottom: 2rem;
+            margin-top: 2rem;
+        }
+        section.contact .input-wrap-2{
+            display: flex;
+            flex-direction: column;
+        }
+        section.contact input{
+            padding: 0.5rem;
+            border: 1px solid var(--light);
+            font-size: 0.9rem;
+        }
+        
+        section.contact .input-wrap-2 input{
+            margin-bottom: 2rem;
+            
+            
+        }
+        section.contact .input-wrap-2 textarea{
+            padding: 0.5rem;
+            border: 1px solid var(--light);
+            font-size: 0.9rem;
+            margin-top: 2rem;
+        }
+        section.contact .input-wrap-2 textarea:focus{
+            background: red;
+            outline: none;
+        }
+        section.contact input:focus{
+            background: red;
+            outline: none;
+        }
+        
+        section.contact .btn-wrapper{
+            text-align: center;
+            margin-top: 2rem;
+        }
+        
+        
+        footer{
+            background: var(--dark);
+            text-align: center;
+            padding: 2rem 0;
+        }
+        footer .footer-logo{
+            margin-bottom: 0.5rem;
+            width:350px ;
+        
+        }
+        footer .footer-social {
+            margin-right: -2rem;
+            
+        
+        }
+        footer .footer-social a{
+            margin-left: 1rem;
+            
+        }
+        
+        footer .copyright{
+            color: var(--primary);
+            margin-top: 1rem;
+            margin-right: -3rem;
+        }
+        
+        
+        
+        .side-main-wrapper{
+            position: relative;
+        }
+        .hamberger{
+            position: absolute;
+             top: 40px;
+             right: 40px;
+             z-index: 11;
+             background: none;
+             border: none;
+             outline: none;
+             cursor: pointer;
+             display: none;
+            
+        }
+        .hamberger img{
+            width: 60px;
+        }
+        .mobile-nav{
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1001;
+            background: var(--light);
+            width: 100%;
+            height: 100%;
+            padding: 2rem;
+            padding-top: 5rem;
+            transform: translateX(-100%);
+            transition: all .5s ease-in-out;
+        }
+        .open{
+            transform: translateX(0);
+        }
+        .times{
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            border: none;
+            background: none;
+            outline: none;
+            cursor: pointer;
+        }
+        .times img{
+            width: 40px;
+        }
+        
+        
+        .mobile-nav ul{
+           list-style-type: none;
+        }
+        .mobile-nav ul li a{
+            color: var(--secondary);
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        
+        
+        @media(max-width:1016px){
+            header #main-nav{
+                display: none;
+            }
+            .hamberger{
+                display: block;
+            }
+            body{
+                width: 200%;
+            }
+            .hero .left img{
+                width: 400px;
+            }
+            .hero .right h1 {
+                font-size: 4rem;
+                font-weight: 200;
+                line-height: 1;
+                margin-bottom: 1rem;
+            }
+            .hero .right p {
+                line-height: 1.5;
+                margin-bottom: 1rem;
+                font-size:1rem ;
+            }
+            .hero{
+                padding-top: 10rem;
+            }
+        }
+        
+        /* social media icon after send message */ 
+        section.socialmedia143 .neomorphism a{
+            display: flex;
+            background: #e3edf7;
+            height: 75px;
+            width: 75px;
+            margin: 0 15px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            /* for shadowing the media icon box*/
+            box-shadow: 6px 6px 10px -1px rgba(0,0,0,0.15),
+                          -6px -6px 10px -1px rgba(255,255,255,0.7);
+        
+            border: 1px solid rgba(0,0,0,0);
+            transition: transform .3s  ;
+        }
+        
+        section.socialmedia143 .neomorphism a i{
+        font-size: 35px;
+        color: #777;
+        transition: transform 0.5s ;
+        }
+        
+        section.socialmedia143 .neomorphism a:hover{
+            box-shadow: inset 4px 4px 6px -1px rgba(0,0,0,0.2),
+            inset -4px -4px 4px -1px rgba(255,255,255,0.7),
+            -0.5px -0.5px 0px rgba(255,255,255,1),
+            0.5px 0.5px 0px rgba(0,0,0,0.15),
+            0px 12px 10px -10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.1);
+            transform: translate(2px);
+        }
+        section.socialmedia143 .neomorphism a:hover i{
+            transform: scale(0.90);
+        }
+        section.socialmedia143 .neomorphism a:hover .fa-facebook{
+            color: #3b5998;
+        }
+        section.socialmedia143 .neomorphism a:hover .fa-twitter{
+            color: #00acee;
+        }
+        section.socialmedia143 .neomorphism a:hover .fa-whatsapp{
+            color: #4fce5d;
+        }
+        section.socialmedia143 .neomorphism a:hover .fa-instagram{
+            color: #f14843;
+        }
+        section.socialmedia143 .neomorphism a:hover .fa-youtube{
+            color: #f00;
+        }
+        
+        
+        section.socialmedia143 .neomorphism{
+            display: flex;
+            justify-content: center;
+        }
+        
+        
+        <script>
+            $(document).ready(function(){
+                $(".slider").slick({
+                 arrows: false,
+                 dots:true,
+                 appenddots:'.slick-dots',
+                 dotsclass:'dots'
+                });
+                
+                
+                
+                let hamberger = document.querySelector('.hamberger');
+                let times = document.querySelector('.times');
+                let mobileNav = document.querySelector('.mobile-nav');
+                
+                hamberger.addEventListener('click',function(){
+                mobileNav.classList.add('open');
+                
+                });
+                
+                times.addEventListener('click',function(){
+                    mobileNav.classList.remove('open');
+                });
+                
+                });
+
+
+        </script>
+        
+        
+        
+
+
+
+    </style>
+</head>
+
+ 
+<nav class=" navbar-dark bg-dark">
+   
+    <div style="height: 30px;" class="container-fluid">
+      <a class="navbar-brand" style="color: blanchedalmond;">Hi  {{username}} !!!</a>
+      
+     <!-- <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>>  -->
+      
+    </div>
+</nav> 
+
+
+
+<div class="side-main-wrapper">
+    <button class="hamberger">
+        <img src="{%static "hamberger.png" %}">
+    </button>
+
+  <div class="mobile-nav">
+          
+    <button class="times"><img src="{%static "time.png" %}">
+
+    </button>
+
+    <ul>
+           <li><a href="#">Home</a></li>
+           <li><a href="#">About</a></li>
+           <li><a href="#">Services</a></li>
+           <li><a href="#">Work</a></li>
+           <li><a href="#">Blogs</a></li>
+    </ul>
+  </div>
+
+
+<header>
+<div class="container">
+
+<nav id="main-nav" class="flex items-centre justify-between">
+
+<div class="left flex items-centre ">
+<div class="branding">
+<img src="{%static "logo.png" %}"  alt=""> 
+
+</div>
+<div>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#work">Works</a>
+<a href="#blogs">Blogs</a>
+
+</div>
+</div>
+<div class="Right">
+<a class=" btn btn-danger" href="/userlogout/">Logout</a>
+
+</div>
+</nav>
+  <div class="hero flex items-centre justify-between">
+      <div class="left flex-1 flex justify-centre">
+          <img src="{%static "dheru3.png" %}">
+     
+     </div>
+      <div class="right flex-1">
+          <h6>Treat yourself to Other</h6>
+          <h1>I am an </h1>
+            <div class="hacker">
+             <h2>
+                <span>W</span>
+                <span>e</span>
+                <span>b</span>
+                <span>D</span>
+                <span>e</span>
+                <span>v</span>
+                <span>l</span>
+                <span>o</span>
+                <span>p</span>
+                <span>e</span>
+                <span>r</span>
+                <span>!</span>
+                <span>!</span>
+               
+            </h2>
+        </div>
+
+
+
+
+
+
+
+          <p>Myself DheRu, a Creative Worker as well as Cyber Expert and Ethical Hacker.Also expertise in Web Development and Data Analytics.I have completed Bachelors' Degree in Computer Science and Completed different Networking projects. </p>
+
+
+           <!--<div> 
+							   <button class="btn btn-secondary"> Download CV </button>
+							  </div> -->
+							 
+							 
+							 
+							  <!-- <div class="cv">
+                              <a href="#">
+								<span></span>
+								<span></span>
+								<span></span>
+								<span></span>
+								Download CV								  
+							 </a>
+							  </div>-->
+
+
+
+
+	
+						  </div>
+						  
+	
+	
+					  
+                        </div>
+       
+       
+       
+       
+       
+                    </div>
+       
+            </header>
+             <section class="cv">
+            <div class="cv12">
+               <a href="#">
+                 <span></span>
+                 <span></span>
+                 <span></span>
+                 <span></span>
+                 Download CV								  
+              </a>
+               </div>
+             </section>
+              
+   
+   
+            <section id="about" class="About">
+                <div class="container flex items-centre">
+                    <div class="flex-1">
+                        <img class="about-image" src="{%static "secondpic.png" %}">
+       
+                    </div>
+                    <div class="flex-1">
+                        <h1>About <span>Me</span></h1>
+                        <h3>Hello!!! I'm DheRu Bhatta Rai.</h3>
+                        <p>I'm Ethical Hacker and Cyber Security Expert.I had completed different projects in Security and Networking fields.I provides data analytics services in reputated company.
+       
+                         In programming language, i just completed Python as well as Django Framework for Web Developing. </p>
+                         <div class="socialmedia">
+                             <a href="https://www.facebook.com/DheRuBhaI123" target="_blank"><img src="{%static "facebook1.png" %}" ></a>
+                             <a href="https://www.instagram.com/dheru_bhattarai/"target="_blank"><img src="{%static "instagram2.png" %}" ></a>
+                             <a href="https://www.linkedin.com/in/dhiraj-bhattarai-81579517b/"target="_blank"><img src="{%static "linkedin1.png" %}"%></a>
+       
+                         </div>
+       
+       
+       
+       
+                                     </div>
+       
+                </div>
+       
+       
+            </section>
+       
+       
+            <section id="services" class="services">
+                <div class="container">
+                    <h1 class="section-heading"> <span>My</span> Skills</h1>
+                    <p>I had experience with different fields as in the below. </p>
+                    <div class="Card-wrapper">
+                        <div class="card">
+                            <img src="{%static "web.png" %}">
+                            <h2>Web Developing</h2>
+                            <p>I made different responsive web pages to the company as well as 1 yrs experience in Web Developing</p>
+       
+                        </div>
+                        <div class="card">
+                            <img src="{%static "networking.png" %}">
+                            <h2>Networking</h2>
+                            <p>I made different responsive web pages to the company as well as 1 yrs experience in Web Developing</p>
+       
+                        </div>
+                        <div class="card">
+                            <img src="{%static "cybersecurity.png" %}">
+                            <h2>Cyber Security</h2>
+                            <p>I made different responsive web pages to the company as well as 1 yrs experience in Web Developing</p>
+       
+                        </div>
+                        <div class="card">
+                            <img src="{%static "dataanalysis.png" %}">
+                            <h2>Data Analytics</h2>
+                            <p>I made different responsive web pages to the company as well as 1 yrs experience in Web Developing</p>
+       
+                        </div>
+                        <div class="card">
+                            <img src="{%static "socialmediamarketing.png" %}">
+                            <h2>Social Media Marketing</h2>
+                            <p>I made different responsive web pages to the company as well as 1 yrs experience in Web Developing</p>
+       
+                        </div>
+                        <div class="card">
+                            <img src="{%static "ethicalhacking.png" %}">
+                            <h2>Ethical Hacking</h2>
+                            <p>I made different responsive web pages to the company as well as 1 yrs experience in Web Developing</p>
+       
+                        </div>
+       
+                    </div>
+       
+                </div>
+       
+            </section>
+
+
+
+
+
+
+
+
+           
+
+       
+                 <section id="work" class="work">
+                  <div class="container">
+                         <h1 class="section-heading"><span>Our</span>Work</h1>
+                            <p>Some images of our projects</p>
+       
+                            <div class="card-wrapper">
+                                <div class="card">
+                                    <div class="overlay">
+                                        <span>Category</span>
+                                        <a href="#">Web Developing</a> 
+                                    </div>
+                                    <img src="{%static "work2.jpg" %}">
+                                </div>
+                                <div class="card">
+                                   <div class="overlay">
+                                       <span>Category</span>
+                                       <a href="#">Networking</a> 
+                                   </div>
+                                   <img src="{%static "work2.jpg" %}">
+                               </div>
+                               <div class="card">
+                                   <div class="overlay">
+                                       <span>Category</span>
+                                       <a href="#">Cyber Security</a> 
+                                   </div>
+                                   <img src="{%static "work2.jpg" %}">
+                               </div>
+                               <div class="card">
+                                   <div class="overlay">
+                                       <span>Category</span>
+                                       <a href="#">Data Analytics</a> 
+                                   </div>
+                                   <img src="{%static "work2.jpg" %}">
+                               </div>
+                               <div class="card">
+                                   <div class="overlay">
+                                       <span>Category</span>
+                                       <a href="#">Social Media Marketing</a> 
+                                   </div>
+                                   <img src="{%static "work2.jpg" %}">
+                               </div>
+                               <div class="card">
+                                   <div class="overlay">
+                                       <span>Category</span>
+                                       <a href="#">Ethical Hacking</a> 
+                                   </div>
+                                   <img src="{%static "work2.jpg" %}">
+                               </div>
+                           
+                           </div>
+       
+       
+       
+                  </div>
+       
+       
+       
+                 </section>
+       
+       
+       
+                  
+                  
+                  <section class="contact">
+                          <div class="container">
+                              <h1 class="section-heading"> Contact <span>Us</span></h1>
+                              <p>If you have any quaries just fill the form</p>
+                              <div class="card-wrapper">
+                                  <div class="card">
+                                      <img src="{%static "call.png" %}">
+                                      <h3>Call Us On</h3>
+                                      <h5>9845803270</h5>
+                                  </div>
+                                  <div class="card">
+                                   <img src="{%static "messagebox.png" %}">
+                                   <h3>Email us at</h3>
+                                   <h5>dheerazbhattarai@gmail.com</h5>
+                               </div>
+                               <div class="card">
+                                   <img src="{%static "visitoffice.png" %}">
+                                   <h3>Location</h3>
+                                   <h5>Shankamul, Kathmandu <br> 44600, Nepal</h5>
+                                               
+                               </div>
+                              </div>
+       
+                               <form action="">
+                                   <div class="input-wrap">
+                                       <input type="text" placeholder="Your Name*">
+                                       <input type="text" placeholder="Your Email">
+                                   </div>
+                                   <div class="input-wrap-2">
+                                       <input type="text" placeholder="Your Subject...">
+                                       <textarea name="" id="" cols="30" rows="10" placeholder="Your Message"></textarea>
+                                   </div>
+                                        <div class="btn-wrapper">
+                                      <button class="btn btn-primary">Send Message</button>
+                                   </div>
+                                   </form>
+       
+       
+                               
+                              
+                               
+                          </div>
+       
+                  </section>
+   
+   
+   
+                  <section class="socialmedia143">
+                   <div class="container">
+                       <h1 class="section-heading"> Follow <span>Us</span></h1>
+                       <div class="neomorphism">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                        </div>
+                          </section>
+   
+   
+   
+   
+   
+   
+   
+       
+       
+                  <footer>
+                  <img class="footer-logo" src="{%static "logo.png" %}">
+                  <div class="footer-social">
+                   <a href="https://www.facebook.com/DheRuBhaI123" target="_blank"><img src="{%static "facebook1.png" %}"></a>
+                   <a href="https://www.instagram.com/dheru_bhattarai/"target="_blank"><img src="{%static "instagram2.png" %}"></a>
+                   <a href="https://www.linkedin.com/in/dhiraj-bhattarai-81579517b/"target="_blank"><img src="{% static "linkedin1.png"%}"></a>
+       
+                  </div>
+                  <div class="copyright">
+                      Copyright@ DheRu Bhatta Rai. <br> All Right Reserved.
+                  </div>
+       
+       
+                  </footer>
+   
+       </div>
+   
+   
+   
+   
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+     <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+     <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+                   
+     <script src="/js/app.js"></script>
+   </body>
+   </html>
+
+
+
+
+
+
+
+
+
+
+
+{% endblock %}

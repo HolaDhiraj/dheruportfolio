@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<nav class="navbar navbar-light bg-dark">
+  <div class="container-fluid">
+    <a href="/" class="navbar-brand" style="color: blanchedalmond;">Home </a>
+
+   <!-- <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>>  -->
+   
+  </div>
+ 
+</nav>
+
+
+<div  style=" padding: 8px;width: 30% ; background-color: yellowgreen; display: block; margin: auto; margin-top: 200px;">
+<h1 style="text-align: center; color: white;" > UserLogin</h1>
+<form method="POST" action="/customer/authenticate/">
+{% csrf_token %}
+<input style="margin-bottom: 5px;" class="form-control" type="text" name="username" placeholder="username">
+<input style="margin-bottom: 5px;" class="form-control"  type="password" name="password" placeholder="password">
+<input style="display:block; margin:auto;"  class="btn btn-outline-success" type="submit">
+</form>
+
+{% for  message in messages  %}
+ <p style="text-align: center;" >{{message}}</p>
+{% endfor %} 
+</div>
+
+{% endblock %}
+ 
